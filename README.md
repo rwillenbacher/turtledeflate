@@ -22,38 +22,43 @@ This makes Turtledeflate very slow but slightly efficient than Zopfli on the tes
 I hope these are correct.
 
 > Zopfli had the example app defaults of 1MB superblock, 512 blocks max and "--gzip --i30".
+
 > gzip had "-9"
+
+> ECT (Efficient-Compression-Tool v0.9.5) had -gzip -9 -strip
+
 > Turtledeflate has 1MB superblock, 512 blocks max and "--9"
+
 
 ### Compression Ratio
 
-| File               | Note     | gzip     | Zopfli   | Turtledeflate | Turtle / Zopfli |
-|--------------------|----------|----------| ---------|---------------|-----------------|
-| alice29.txt.gz     | Cantrbry | 54191    | 51473    | 51422         | 0.999009        |
-| asyoulik.txt.gz    | Cantrbry | 48829    | 46345    | 46280         | 0.998597        |
-| cp.html.gz         | Cantrbry | 7981     | 7714     | 7702          | 0.998444        |
-| fields.c.gz        | Cantrbry | 3136     | 3018     | 3016          | 0.999337        |
-| grammar.lsp.gz     | Cantrbry | 1246     | 1196     | 1194          | 0.998327        |
-| kennedy.xls.gz     | Cantrbry | 209733   | 181412   | 175425        | 0.966997        |
-| lcet10.txt.gz      | Cantrbry | 144429   | 137246   | 136950        | 0.997843        |
-| plrabn12.txt.gz    | Cantrbry | 194277   | 183969   | 183682        | 0.998439        |
-| ptt5.gz            | Cantrbry | 52382    | 48575    | 48506         | 0.998579        |
-| sum.gz             | Cantrbry | 12772    | 11597    | 11563         | 0.997068        |
-| xargs.1.gz         | Cantrbry | 1756     | 1706     | 1704          | 0.998827        |
-| dickens.gz         | Silesia  | 3851823  | 3672829  | 3664991       | 0.997865        |
-| mozilla.gz         | Silesia  | 18994142 | 18075778 | 18035457      | 0.997769        |
-| mr.gz              | Silesia  | 3673940  | 3439166  | 3420236       | 0.994495        |
-| nci.gz             | Silesia  | 2987533  | 2739962  | 2735758       | 0.998465        |
-| ooffice.gz         | Silesia  | 3090442  | 2987867  | 2985017       | 0.999046        |
-| osdb.gz            | Silesia  | 3716342  | 3607235  | 3605896       | 0.999628        |
-| reymont.gz         | Silesia  | 1820834  | 1692000  | 1691218       | 0.999537        |
-| samba.gz           | Silesia  | 5408272  | 5095092  | 5085326       | 0.998083        |
-| sao.gz             | Silesia  | 5327041  | 5240993  | 5234480       | 0.998757        |
-| webster.gz         | Silesia  | 12061624 | 11517716 | 11505585      | 0.998946        |
-| x-ray.gz           | Silesia  | 6037713  | 5743093  | 5739938       | 0.999450        |
-| xml.gz             | Silesia  | 662284   | 626427   | 625708        | 0.998852        |
-| enwik8.gz          | enwik8   | 36445248 | 34960932 | 34932605      | 0.999189        |
-| pak0.pak.gz        | Quake    | 8561915  | 7787285  | 7756348       | 0.996027        |
+| File               | Note     | gzip     | Zopfli   | ECT      | Turtledeflate | Turtle / ECT    |
+|--------------------|----------|----------| ---------|----------|---------------|-----------------|
+| alice29.txt.gz     | Cantrbry | 54191    | 51473    | 51503    | 51422         | 0.9984273       |
+| asyoulik.txt.gz    | Cantrbry | 48829    | 46345    | 46322    | 46280         | 0.9990933       |
+| cp.html.gz         | Cantrbry | 7981     | 7714     | 7716     | 7702          | 0.9981856       |
+| fields.c.gz        | Cantrbry | 3136     | 3018     | 3025     | 3016          | 0.9970248       |
+| grammar.lsp.gz     | Cantrbry | 1246     | 1196     | 1205     | 1194          | 0.9908714       |
+| kennedy.xls.gz     | Cantrbry | 209733   | 181412   | 180811   | 175425        | 0.9702120       |
+| lcet10.txt.gz      | Cantrbry | 144429   | 137246   | 137058   | 136950        | 0.9992120       |
+| plrabn12.txt.gz    | Cantrbry | 194277   | 183969   | 183831   | 183682        | 0.9991895       |
+| ptt5.gz            | Cantrbry | 52382    | 48575    | 48546    | 48506         | 0.9991760       |
+| sum.gz             | Cantrbry | 12772    | 11597    | 11592    | 11563         | 0.9974983       |
+| xargs.1.gz         | Cantrbry | 1756     | 1706     | 1711     | 1704          | 0.9959088       |
+| dickens.gz         | Silesia  | 3851823  | 3672829  | 3669353  | 3664991       | 0.9988112       |
+| mozilla.gz         | Silesia  | 18994142 | 18075778 | 18052652 | 18035457      | 0.9990475       |
+| mr.gz              | Silesia  | 3673940  | 3439166  | 3426480  | 3420236       | 0.9981777       |
+| nci.gz             | Silesia  | 2987533  | 2739962  | 2737510  | 2735758       | 0.9993600       |
+| ooffice.gz         | Silesia  | 3090442  | 2987867  | 2985973  | 2985017       | 0.9996798       |
+| osdb.gz            | Silesia  | 3716342  | 3607235  | 3605620  | 3605896       | 1.0000770       |
+| reymont.gz         | Silesia  | 1820834  | 1692000  | 1694254  | 1691218       | 0.9982081       |
+| samba.gz           | Silesia  | 5408272  | 5095092  | 5098615  | 5085326       | 0.9973936       |
+| sao.gz             | Silesia  | 5327041  | 5240993  | 5236401  | 5234480       | 0.9996331       |
+| webster.gz         | Silesia  | 12061624 | 11517716 | 11507968 | 11505585      | 0.9997929       |
+| x-ray.gz           | Silesia  | 6037713  | 5743093  | 5742529  | 5739938       | 0.9995488       |
+| xml.gz             | Silesia  | 662284   | 626427   | 625907   | 625708        | 0.9996821       |
+| enwik8.gz          | enwik8   | 36445248 | 34960932 | 34937781 | 34932605      | 0.9998519       |
+| pak0.pak.gz        | Quake    | 8561915  | 7787285  | 7784151  | 7756348       | 0.9964283       |
 
 
 
@@ -90,7 +95,7 @@ I hope these are correct.
 | enwik8.gz          | enwik8   | 5    | 448    | 22758 (521)   |
 | pak0.pak.gz        | Quake    | 3    | 614    | 78523 (4033)* |
 
-> * lol..
+> \* lol..
 
 Yes, Turtledeflate is absurdly slow.
 
